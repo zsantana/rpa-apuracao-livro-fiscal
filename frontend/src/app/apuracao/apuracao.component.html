@@ -1,0 +1,127 @@
+<div class="container">
+  <!--<button mat-button color="primary" (click)="openDialog(null)">Add Element</button> -->
+     
+  <div class="form-group">
+    <mat-label class="rounded-input">Mês/Ano:
+        <input type="text" value="mesano" class="col-md-2 control-label" maxlength="7" placeholder="Mês/Ano:" [(ngModel)]="mesano"
+        />
+      </mat-label>
+      <mat-label class="rounded-input">Filial:
+        <input type="text" class="col-md-2 control-label" placeholder="Filial" [(ngModel)]="nomFilial"/>
+      </mat-label>  
+    <button mat-stroked-button (click)="efetuarPerquisa(mesano, nomFilial)">Pesquisar </button>
+    <button mat-stroked-button (click)="logout()">Sair </button>
+  </div>
+  
+
+  <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="mesAnoCompetencia">
+      <th mat-header-cell *matHeaderCellDef> Mês/Ano </th>
+      <td mat-cell *matCellDef="let element"> {{element.mesAnoCompetencia}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nomeFilial">
+      <th mat-header-cell *matHeaderCellDef> Filial </th>
+      <td mat-cell *matCellDef="let element"> {{element.nomeFilial}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorTotalFaturaPref">
+      <th mat-header-cell *matHeaderCellDef> Total (PREF) </th>
+      <td mat-cell *matCellDef="let element"> {{element.valorTotalFaturaPref}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorBaseCalculoPref">
+      <th mat-header-cell *matHeaderCellDef> Base (PREF) </th>
+      <td mat-cell *matCellDef="let element"> {{element.valorBaseCalculoPref}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="valorTotalImpostoPref">
+      <th mat-header-cell *matHeaderCellDef> Imposto (PREF) </th>
+      <td mat-cell *matCellDef="let element"> {{element.valorTotalImpostoPref}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorTotalFaturaFatwin">
+      <th mat-header-cell *matHeaderCellDef> Total (FATWIN/EBIT) </th>
+      <td mat-cell *matCellDef="let element"> {{element.valorTotalFaturaFatwin}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorBaseCalculoFatwin">
+      <th mat-header-cell *matHeaderCellDef> Base (FATWIN/EBIT) </th>
+      <td mat-cell *matCellDef="let element"> {{element.valorBaseCalculoFatwin}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorTotalImpostoFatwin">
+      <th mat-header-cell *matHeaderCellDef> Imposto (FATWIN/EBIT) </th>
+      <td mat-cell *matCellDef="let element"> {{element.valorTotalImpostoFatwin}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorTotalFaturaSynchro">
+      <th mat-header-cell *matHeaderCellDef> Total (Synchro) </th>
+      <td mat-cell *matCellDef="let element"> {{element.valorTotalFaturaSynchro}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorBaseCalculoSynchro">
+      <th mat-header-cell *matHeaderCellDef> Base (Synchro) </th>
+      <td mat-cell *matCellDef="let element"> {{element.valorBaseCalculoSynchro}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorTotalImpostoSynchro">
+      <th mat-header-cell *matHeaderCellDef> Imposto (Synchro) </th>
+      <td mat-cell *matCellDef="let element"> {{element.valorTotalImpostoSynchro}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalNotasFatwin">
+      <th mat-header-cell *matHeaderCellDef> Total de Notas Fatwin</th>
+      <td mat-cell *matCellDef="let element"> {{element.totalNotasFatwin}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalNotasLivro">
+      <th mat-header-cell *matHeaderCellDef> Total de Notas Livro</th>
+      <td mat-cell *matCellDef="let element"> {{element.totalNotasLivro}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="statusProcessamento">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element"> {{element.statusProcessamento}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="CodCnpj">
+      <th mat-header-cell *matHeaderCellDef>CNPJ</th>
+      <td mat-cell *matCellDef="let element"> {{element.CodCnpj}} </td>
+    </ng-container>
+    
+    
+    <ng-container matColumnDef="livroPDF">
+      <th mat-header-cell *matHeaderCellDef> Livro(PDF) </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button mat-icon-button (click)="downloadLivroFiscal(element)" color="primary">
+          <mat-icon>picture_as_pdf</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fatwinPDF">
+      <th mat-header-cell *matHeaderCellDef> Guia(PDF) </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button mat-icon-button (click)="downloadEmissaoGuia(element)" color="primary">
+          <mat-icon>picture_as_pdf</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="synchroPDF">
+      <th mat-header-cell *matHeaderCellDef> Synchro(PDF) </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button mat-icon-button (click)="downloadSynchro(element)" color="primary">
+          <mat-icon>picture_as_pdf</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>

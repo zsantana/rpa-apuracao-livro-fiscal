@@ -1,0 +1,18 @@
+<h1 *ngIf="!isChange" mat-dialog-title>Create Element</h1>
+<h1 *ngIf="isChange" mat-dialog-title>Edit Element</h1>
+<div mat-dialog-content>
+  
+  <!--
+  <mat-form-field>
+    <mat-label>nomSistema</mat-label>
+    <input matInput [(ngModel)]="data.nomSistema">
+  </mat-form-field>
+  -->
+
+ 
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button *ngIf="!isChange"  [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+  <button mat-button *ngIf="isChange"  [mat-dialog-close]="data" cdkFocusInitial>Edit</button>
+</div>

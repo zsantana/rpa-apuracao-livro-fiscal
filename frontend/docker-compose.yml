@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+   painel-frontend:
+    image: painel-frontend:v1.0.0
+    ports:
+      - 4200:80
+    networks:
+      - "host_sendbox"
+
+networks:
+  host_sendbox:
+    name: host_sendbox
+    external: true

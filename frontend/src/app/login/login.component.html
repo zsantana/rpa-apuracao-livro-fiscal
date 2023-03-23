@@ -1,0 +1,23 @@
+    <body>
+        <main>
+            <div class="row">
+                <div class="colm-logo">
+                    <img src="https://whatfix.com/blog/wp-content/uploads/2021/09/digital-innovation.jpg" alt="Logo">
+                    <h2>Tech JS -  Soluções em automação.</h2>
+                </div>
+                <div class="colm-form">
+                    <div class="form-container">
+                      <form [formGroup]="form" (submit)="submit()">
+                        <h1 class="h3 mb-3 fw-normal">Tech JS - Login</h1>
+                        <input formControlName="login" type="text" class="form-control" placeholder="login" required>
+                        <input formControlName="senha" type="password" class="form-control" placeholder="Password" required>
+                        <button class="btn-login" type="submit">Logar</button>
+                      </form>  
+                      
+                        <!--<a href="#">Esqueceu a senha?</a>-->
+                        <!--<button class="btn-new">Create new Account</button> -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>

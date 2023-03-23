@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  painel-frontend:
+    container_name: painel-backend
+    image: painel-backend:v1.0.0
+    environment:
+      - QUARKUS_PORT=$QUARKUS_PORT
+      
+      - DATABASE_KIND=$DATABASE_KIND
+      - DATABASE_USERNAME=$DATABASE_USERNAME
+      - DATABASE_PASSWORD=$DATABASE_PASSWORD
+      - DATABASE_URI=$DATABASE_URI
+
+      - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+      - AWS_BUCKET_REGION=$AWS_BUCKET_REGION
+      - AWS_BUCKET_NAME=$AWS_BUCKET_NAME
+    ports:
+      - 8093:8093
+    networks:
+      - "host_sendbox"
+
+networks:
+  host_sendbox:
+    name: host_sendbox
+    external: true
