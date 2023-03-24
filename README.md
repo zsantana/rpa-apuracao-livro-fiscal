@@ -73,16 +73,8 @@ Observability:
 * opentelemetry
 
 
-Database:
-* hibernate-reactive-panache
-* reactive-pg-client
-
-
-Authentication and Security:
-* oidc-client
-* keycloak-authorization
-
 Other integrations:
+
 * resteasy-reactive-jackson
 * lombok
 * mapstruct
@@ -95,8 +87,13 @@ Unit and Integration testing:
 
 
 
-# Visão de Arquitetura
+# Visão geral de Arquitetura
 ![image](https://user-images.githubusercontent.com/17239827/227523672-783dbcc5-9e64-480e-a54e-b2939f017ccb.png)
+
+
+# Integração RPA Desktop
+![image](https://user-images.githubusercontent.com/17239827/227525867-11a2d1ad-e315-4726-a449-7c3ed648cd75.png)
+
 
 
 
