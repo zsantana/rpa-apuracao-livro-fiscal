@@ -1,5 +1,5 @@
 ## Description
-Módulo do painel de companhamento do processo de apuração fiscal da Brinks
+Módulo do painel de companhamento do processo de apuração fiscal
 
 
 ## 💻 Getting started
